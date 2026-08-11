@@ -50,7 +50,7 @@ function Navbar() {
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
 
           <NavLink
-            to="/"
+            to="/multimax"
             onClick={closeMenu}
           >
             HOME

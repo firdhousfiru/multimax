@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -16,38 +16,24 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-
+    <>
       <Navbar />
 
       <main>
         <Routes>
-
-          <Route path="/" element={<Home />} />
-
+          <Route path="/multimax" element={<Home />} />
           <Route path="/about" element={<About />} />
-
           <Route path="/business" element={<Business />} />
-
           <Route path="/products" element={<Products />} />
-
           <Route path="/leadership" element={<Leadership />} />
-
           <Route path="/clients" element={<Clients />} />
-
-          <Route
-            path="/opportunities"
-            element={<Opportunities />}
-          />
-
+          <Route path="/opportunities" element={<Opportunities />} />
           <Route path="/contact" element={<Contact />} />
-
         </Routes>
       </main>
 
       <Footer />
-
-    </BrowserRouter>
+    </>
   )
 }
 
