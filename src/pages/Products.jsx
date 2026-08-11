@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PageHero from '../components/PageHero'
-import products from '../data/products'
+import products from '../Data/products'
 
 function Products() {
 
