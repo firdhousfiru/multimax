@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import heroImage from '../assets/images/Home1.png'
 
 function Home() {
 
@@ -7,51 +8,54 @@ function Home() {
 
       {/* HERO */}
 
-      <section className="hero">
+     <section
+  className="hero"
+  style={{ backgroundImage: `url(${heroImage})` }}
+>
+  <div className="hero-overlay">
 
-        <div className="hero-overlay">
+    <div className="container hero-content">
 
-          <div className="container hero-content">
+      <div className="hero-line"></div>
 
-            <p className="hero-small">
-              MULTIMAX CORPORATION
-            </p>
+      <p className="hero-small">
+        MULTIMAX CORPORATION
+      </p>
 
-            <h1>
-              Building Foundations.
-              <br />
-              <span>Powering Industries.</span>
-            </h1>
+      <h1>
+        Building Foundations.
+        <br />
+        <span>Powering Industries.</span>
+      </h1>
 
-            <p className="hero-description">
-              Integrated industrial solutions across mining,
-              minerals trading, industrial products, and
-              infrastructure supply.
-            </p>
+      <p className="hero-description">
+        Integrated industrial solutions across mining,
+        minerals trading, industrial products, and
+        infrastructure supply.
+      </p>
 
-            <div className="hero-buttons">
+      <div className="hero-buttons">
 
-              <Link
-                to="/business"
-                className="btn primary-btn"
-              >
-                EXPLORE OUR BUSINESS
-              </Link>
+        {/* <Link
+          to="/business"
+          className="btn primary-btn"
+        >
+          EXPLORE OUR BUSINESS
+        </Link> */}
 
-              <Link
-                to="/contact"
-                className="btn secondary-btn"
-              >
-                CONTACT US
-              </Link>
+        <Link
+          to="/contact"
+          className="btn primary-btn"
+        >
+          CONTACT US
+        </Link>
 
-            </div>
+      </div>
 
-          </div>
+    </div>
 
-        </div>
-
-      </section>
+  </div>
+</section>
 
 
       {/* COMPANY INTRODUCTION */}

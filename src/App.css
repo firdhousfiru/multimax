@@ -265,55 +265,95 @@
 }
 
 
+
+/* ========================================
+   HERO CONTENT
+======================================== */
 /* ========================================
    HERO
 ======================================== */
-
 .hero {
-
   min-height: 680px;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(10,25,40,0.92),
-      rgba(10,25,40,0.55)
-    ),
-    linear-gradient(
-      135deg,
-      #34434e,
-      #172f48
-    );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   display: flex;
-
   align-items: center;
 
+  position: relative;
+  overflow: hidden;
 }
 
+
+/* Blue gradient over the image */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(23, 47, 72, 0.98) 0%,
+    rgba(23, 47, 72, 0.88) 25%,
+    rgba(23, 47, 72, 0.60) 50%,
+    rgba(23, 47, 72, 0.25) 75%,
+    rgba(23, 47, 72, 0.05) 100%
+  );
+
+  z-index: 0;
+}
+
+
+/* Hero content stays above the overlay */
 
 .hero-content {
+  position: relative;
+  z-index: 1;
 
   padding: 100px 0;
-
 }
 
 
-.hero-small {
+/* ========================================
+   HERO LEFT-TO-RIGHT FADE ANIMATION
+======================================== */
 
+@keyframes heroLeftFade {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* Company name */
+
+.hero-small {
   color: var(--yellow);
 
   font-size: 13px;
-
   font-weight: 800;
 
   letter-spacing: 3px;
 
+  opacity: 0;
+  animation: heroLeftFade 0.8s ease-out forwards;
+  animation-delay: 0.2s;
 }
 
 
-.hero h1 {
+/* Main heading */
 
+.hero h1 {
   max-width: 850px;
 
   margin: 20px 0;
@@ -330,44 +370,49 @@
 
   letter-spacing: -3px;
 
+  opacity: 0;
+  animation: heroLeftFade 0.9s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 
 .hero h1 span {
-
   color: var(--yellow);
-
 }
 
 
-.hero-description {
+/* Description */
 
+.hero-description {
   max-width: 600px;
 
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.85);
 
   line-height: 1.8;
 
+  opacity: 0;
+  animation: heroLeftFade 0.8s ease-out forwards;
+  animation-delay: 0.6s;
 }
 
 
-.hero-buttons {
+/* Button */
 
+.hero-buttons {
   display: flex;
 
   gap: 15px;
 
   margin-top: 30px;
 
+  opacity: 0;
+  animation: heroLeftFade 0.8s ease-out forwards;
+  animation-delay: 0.8s;
 }
-
-
 /* ========================================
    PAGE HERO
 ======================================== */
-
 .page-hero {
-
   padding: 110px 0;
 
   background:
@@ -376,25 +421,44 @@
       var(--navy-dark),
       var(--navy)
     );
-
 }
 
 
-.page-hero-label {
+/* ========================================
+   PAGE HERO ANIMATION
+======================================== */
 
+@keyframes pageHeroLeftFade {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* Label */
+
+.page-hero-label {
   color: var(--yellow);
 
   font-size: 12px;
-
   font-weight: 800;
-
   letter-spacing: 2px;
 
+  opacity: 0;
+  animation: pageHeroLeftFade 0.8s ease-out forwards;
+  animation-delay: 0.2s;
 }
 
 
-.page-hero h1 {
+/* Heading */
 
+.page-hero h1 {
   max-width: 850px;
 
   margin: 15px 0;
@@ -409,19 +473,25 @@
 
   line-height: 1;
 
+  opacity: 0;
+  animation: pageHeroLeftFade 0.9s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 
-.page-hero-description {
+/* Description */
 
+.page-hero-description {
   max-width: 650px;
 
   color: rgba(255,255,255,0.7);
 
   line-height: 1.7;
 
+  opacity: 0;
+  animation: pageHeroLeftFade 0.8s ease-out forwards;
+  animation-delay: 0.7s;
 }
-
 
 /* ========================================
    HOME ABOUT
@@ -1347,115 +1417,85 @@
 /* ========================================
    LEADERSHIP
 ======================================== */
-
 .leadership-section {
-
   padding: 100px 0;
-
   background: var(--light-grey);
-
+}
+.leadership-section .section-heading > p {
+  color: var(--grey);
+  font-size: 15px;
+  line-height: 1.7;
 }
 
-
-.leadership-grid {
-
+.leaders-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-
+  margin-top: 50px;
 }
-
 
 .leader-card {
-
-  position: relative;
-
-  padding: 40px;
-
   background: white;
-
-  border-top: 4px solid var(--yellow);
-
+  /* border-radius: 10px; */
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.leader-number {
-
-  color: #dfe2e5;
-
-  font-size: 50px;
-
-  font-weight: 900;
-
+.leader-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
+/* Person image */
 
-.leader-photo-placeholder {
-
-  width: 90px;
-
-  height: 90px;
-
-  margin: 20px 0;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  background: var(--navy);
-
-  color: var(--yellow);
-
-  font-size: 24px;
-
-  font-weight: 800;
-
-}
-
-
-.leader-card h2 {
-
-  margin: 5px 0 20px;
-
-  color: var(--navy);
-
-}
-
-
-.leader-description {
-
-  white-space: pre-line;
-
-  color: var(--grey);
-
-  font-size: 14px;
-
-  line-height: 1.8;
-
-}
 .leader-image {
   width: 100%;
   height: 350px;
   overflow: hidden;
-  border-radius: 10px;
-  background: #ffffff;
-
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 }
 
 .leader-image img {
-  width: 100%;
+  width: auto;
+  border-radius: 10px;
+  margin-top: 10px;
   height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  object-position: center;
   display: block;
+}
+
+/* Details */
+
+.leader-content {
+  padding: 25px;
+}
+
+.leader-content h3 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 22px;
+}
+
+.leader-content h4 {
+  margin: 0 0 15px;
+  color: var(--yellow);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.leader-content p {
+  margin: 0;
+  color: var(--grey);
+  font-size: 14px;
+  line-height: 1.7;
 }
 /* ========================================
    CLIENTS
@@ -1954,6 +1994,11 @@
 
 }
 
+@media (max-width: 1000px) {
+  .leaders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 900px) {
 
@@ -2077,7 +2122,15 @@
   }
 
 }
+@media (max-width: 650px) {
+  .leaders-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .leader-image {
+    height: 350px;
+  }
+}
 
 @media (max-width: 600px) {
 
